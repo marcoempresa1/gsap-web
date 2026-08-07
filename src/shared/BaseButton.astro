@@ -1,0 +1,107 @@
+---
+interface Props {
+  class?: string;
+  href?: string;
+  target?: string;
+  type?: 'button' | 'submit' | 'reset';
+  variant?: 'gold' | 'orange' | 'cyan';
+}
+
+const {
+  class: className = '',
+  href,
+  target,
+  type = 'button',
+  variant = 'gold',
+  ...rest
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+  href={href}
+  target={target}
+  type={!href ? type : undefined}
+  class:list={[
+    "xeno-btn group relative inline-flex items-center justify-center gap-3 px-6 py-3 cursor-pointer text-decoration-none select-none transition-transform duration-200 active:scale-95",
+    `variant-${variant}`,
+    className
+  ]}
+  {...rest}
+>
+  {/* Icon Slot */}
+  <span class="relative z-10 flex items-center justify-center w-5 h-5 text-amber-300 group-hover:text-white transition-colors duration-200">
+    <slot name="icon">
+      <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full">
+        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+      </svg>
+    </slot>
+  </span>
+
+  {/* Text Slot */}
+  <span class="relative z-10 font-extrabold text-sm md:text-base tracking-wider uppercase text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+    <slot>Comprar Ahora</slot>
+  </span>
+</Tag>
+
+<style>
+  /* Base Glow */
+  .xeno-btn {
+    filter: drop-shadow(0px 0px 8px rgba(255, 170, 0, 0.45));
+  }
+
+  .xeno-btn:hover {
+    filter: drop-shadow(0px 0px 14px rgba(255, 190, 0, 0.75));
+  }
+
+  /* Golden Border Layer */
+  .xeno-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #ffe57f 0%, #d4af37 50%, #996515 100%);
+    clip-path: polygon(
+      0 10px, 10px 10px, 10px 0, 
+      calc(100% - 10px) 0, calc(100% - 10px) 10px, 100% 10px, 
+      100% calc(100% - 10px), calc(100% - 10px) calc(100% - 10px), calc(100% - 10px) 100%, 
+      10px 100%, 10px calc(100% - 10px), 0 calc(100% - 10px)
+    );
+    z-index: 0;
+    transition: filter 0.2s, background 0.2s;
+  }
+
+  /* Dark Inner Background */
+  .xeno-btn::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: #0f0e13;
+    clip-path: polygon(
+      0 9px, 9px 9px, 9px 0, 
+      calc(100% - 9px) 0, calc(100% - 9px) 9px, 100% 9px, 
+      100% calc(100% - 9px), calc(100% - 9px) calc(100% - 9px), calc(100% - 9px) 100%, 
+      9px 100%, 9px calc(100% - 9px), 0 calc(100% - 9px)
+    );
+    z-index: 1;
+    transition: background 0.2s ease;
+  }
+
+  .xeno-btn:hover::before {
+    filter: brightness(1.25);
+  }
+
+  .xeno-btn:hover::after {
+    background: #1c1924;
+  }
+
+  /* Orange Variant */
+  .variant-orange::before {
+    background: linear-gradient(180deg, #ff9e40 0%, #ff5722 100%);
+  }
+
+  /* Cyan Variant */
+  .variant-cyan::before {
+    background: linear-gradient(180deg, #80deea 0%, #00acc1 100%);
+  }
+</style>

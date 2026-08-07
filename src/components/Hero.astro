@@ -1,0 +1,80 @@
+---
+import Header from "./Header.astro";
+import TrailerButton from "./TrailerButton.astro";
+const heroBg = "/image/hero.png";
+const logoUrl = "/image/dblogo.webp";
+const transitionImage = "/image/trans.webp";
+---
+
+<section
+  id="hero-scroll"
+  data-hero-cinematic
+  class="relative isolate h-[220vh] overflow-hidden bg-black"
+>
+  <div
+    class="relative flex h-screen items-center justify-center overflow-hidden"
+  >
+    <div data-hero-ui class="pointer-events-none absolute inset-0 z-40">
+      <Header />
+      <div
+        data-trailer-wrapper
+        class="pointer-events-none absolute inset-0 z-50 flex items-end justify-end p-6 sm:p-8"
+      >
+        <TrailerButton />
+      </div>
+    </div>
+    <img
+      data-hero-bg
+      src={heroBg}
+      alt="Dragon Ball Hero"
+      class="absolute inset-0 h-full w-full scale-105 object-cover"
+    />
+
+    <div
+      data-hero-overlay
+      class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,0,0,0.1),_rgba(0,0,0,0.65))]"
+    >
+    </div>
+
+    <div
+      data-hero-text
+      class="hero-mask absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-white z-10 -mt-10"
+    >
+      <!-- Central Logo -->
+      <img
+        data-hero-subtitle
+        src={logoUrl}
+        alt="Dragon Ball Xenoverse 3"
+        class="h-32 sm:h-40 lg:h-48 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(6,182,212,0.4)] mb-4"
+      />
+
+      <!-- Subtitle / Tagline -->
+      <p
+        data-hero-description
+        class="hero-word max-w-2xl text-lg sm:text-xl lg:text-2xl uppercase tracking-[0.18em] text-5xl md:text-7xl leading-none mb-6 font-['Helvetica_Condensed'] [text-shadow:_0_1px_0_#000,_0_-1px_0_#000,_1px_0_0_#000,_-1px_0_0_#000,_0_2px_6px_rgba(0,0,0,0.45)]"
+      >
+        TOMA TU LUGAR EN LA HISTORIA Y EXPERIMENTA LO QUE TE ESPERA EN WEST
+        CITY.
+      </p>
+
+      <div
+        data-transition-screen
+        class="pointer-events-none absolute inset-0 z-20 flex items-center justify-center overflow-hidden bg-black text-center"
+      >
+        <span
+          data-transition-text
+          class="relative text-[8rem] sm:text-[14rem] md:text-[8rem] lg:text-[12rem] font-black uppercase  text-transparent leading-none  select-none"
+          style={`
+            background-image: url("${heroBg}");
+            background-size: cover;
+            background-position: center;
+            -webkit-background-clip: text;
+            background-clip: text;
+          `}
+        >
+          2027
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,175 @@
+---
+import BaseButton from '@/shared/BaseButton.astro';
+
+interface Props {
+  videoUrl?: string;
+  thumbnailUrl?: string;
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  videoUrl = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+  thumbnailUrl = '/image/trailerbutton.webp',
+  title = 'Descubre el trailer oficial',
+  subtitle = 'Ver trailer'
+} = Astro.props;
+---
+
+<button
+  type="button"
+  data-trailer-cta
+  class="trailer-cta group pointer-events-auto uppercase relative flex items-start overflow-hidden bg-neutral-950/80 backdrop-blur-md transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] drop-shadow-[0_0_15px_rgba(0,0,0,0.8)] hover:drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] px-6 py-3 text-white"
+  aria-label="Ver tráiler oficial"
+>
+  <!-- 1. Imagen a sangre (desaparece con width/height 0 al cerrar) -->
+  <picture class="trailer-cta__media block shrink-0 overflow-hidden h-full transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
+    <img
+      src={thumbnailUrl}
+      alt="Trailer"
+      class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+    />
+  </picture>
+
+  <!-- 2. Cuerpo de textos -->
+  <span class="trailer-cta__body flex flex-col justify-start self-stretch px-6 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
+    <!-- Texto largo (Hero) -->
+    <span class="trailer-cta__title block overflow-hidden whitespace-nowrap  tracking-wider text-amber-400 text-left transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
+      Descubre el <br /> trailer oficial
+    </span>
+    <!-- Texto corto (Resto de la web al colapsar) -->
+    <span class="trailer-cta__short block font-bebas-neue   tracking-[0.15em] text-xl leading-none overflow-hidden whitespace-nowrap text-white  transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]" data-label={subtitle}>
+      {subtitle}
+    </span>
+  </span>
+
+  <!-- 3. Botón de Play Ovalado -->
+  <span class="trailer-cta__play absolute flex h-[34px] w-[42px] shrink-0 items-center justify-center rounded-full bg-amber-400 text-black shadow-lg transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-amber-300">
+    <svg class="h-[15px] w-auto ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M8 5v14l11-7z" />
+    </svg>
+  </span>
+</button>
+
+<style>
+  /* 
+    Sistema de escala mediante la variable CSS `--h`.
+    Toda la geometría del botón depende de esta altura.
+  */
+  .trailer-cta {
+    --h: 170px;
+    --closed-play-space: calc(var(--h) * 0.35);
+    --closed-text-offset: calc(var(--h) * 0.07);
+    height: var(--h);
+    padding-right: calc(var(--h) * 0.03);
+  
+  }
+
+  .trailer-cta__media {
+    width: calc(var(--h) * 1.208);
+    margin-left: -1px;
+  }
+
+  .trailer-cta__title {
+    max-width: var(--h);
+    height: calc(var(--h) * 0.38);
+    font-size: calc(var(--h) * 0.11);
+    line-height: 1.15;
+    padding-top: calc(var(--h) * 0.09);
+  
+  }
+
+  .trailer-cta__short {
+    max-width: 0;
+    opacity: 0;
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .trailer-cta__play {
+    right: calc(var(--h) * 0.05);
+    bottom: calc(var(--h) * 0.05);
+  }
+
+  /* ----------------------------------------------------
+     ESTADO CERRADO (Colapsado al hacer scroll fuera del Hero)
+     ---------------------------------------------------- */
+  .trailer-cta--closed {
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 56px 0 10px;
+    clip-path: polygon(100% 0%, 15% 0%, 0% 60%, 15% 100%, 100% 100%);
+  }
+
+  .trailer-cta--closed .trailer-cta__media {
+    width: 0;
+    opacity: 0;
+  }
+
+  .trailer-cta--closed .trailer-cta__title {
+    max-width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  .trailer-cta--closed .trailer-cta__short {
+    max-width: 140px;
+    opacity: 1;
+    font-size: 18px;
+    letter-spacing: 0.12em;
+    line-height: 1.1;
+  }
+
+  .trailer-cta--closed .trailer-cta__play {
+    right: 8px;
+    bottom: 7px;
+  }
+</style>
+
+<script>
+  function initSpidermanTrailerButton() {
+    const cta = document.querySelector<HTMLElement>('[data-trailer-cta]');
+    if (!cta) return;
+
+    const CLOSED = 'trailer-cta--closed';
+    // Verificar si el dispositivo soporta hover (no táctil puro)
+    const canHover = window.matchMedia('(hover: hover) and (min-width: 768px)');
+    const hero = document.querySelector<HTMLElement>('[data-hero-cinematic]');
+
+    let scrolled = false;
+    let hovered = false;
+
+    // Renderizador único reactivo
+    const render = () => {
+      // Se cierra si no se puede hacer hover (móvil) O si se ha scrolleado y NO se tiene el mouse encima
+      cta.classList.toggle(CLOSED, !canHover.matches || (scrolled && !hovered));
+    };
+
+    const onScroll = () => {
+      // En la web de Spiderman el hero es alto, pero la tarjeta grande vive solo en la primera vista (viewport).
+      // Al desplazar hacia abajo más del 40% del alto de la ventana, se colapsa en píldora.
+      scrolled = window.scrollY > window.innerHeight * 0.4;
+      render();
+    };
+
+    const setHovered = (val: boolean) => () => {
+      hovered = val;
+      render();
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+
+    cta.addEventListener('pointerenter', setHovered(true));
+    cta.addEventListener('pointerleave', setHovered(false));
+    cta.addEventListener('focus', setHovered(true));
+    cta.addEventListener('blur', setHovered(false));
+
+    canHover.addEventListener('change', render);
+    onScroll();
+  }
+
+  initSpidermanTrailerButton();
+  document.addEventListener('astro:page-load', initSpidermanTrailerButton);
+</script>

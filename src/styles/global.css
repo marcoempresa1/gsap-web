@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("/fonts/BebasNeue-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "hatten";
+  src: url("/fonts/HATTEN.TTF") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Condensed";
+  src: url("/fonts/Helvetica Condensed Bold Italic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  --font-bebas: "Bebas Neue", sans-serif;
+  --font-hatten: "hatten", sans-serif;
+  --font-helvetica-condensed: "Helvetica Condensed", sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: "Bebas Neue", "hatten", "Helvetica Condensed", sans-serif;
+  }
+}
+
+/* Texto limpio metálico y elegante para la UI del juego */
+.game-text-bevel {
+  font-family: "Bebas Neue", sans-serif;
+  color: #ffffff;
+  text-shadow:
+    0 0 1px #000,
+    1px 1px 2px #000,
+    -1px -1px 2px #000,
+    1px -1px 2px #000,
+    -1px 1px 2px #000,
+    0px 4px 12px rgba(0, 0, 0, 0.9);
+}
+
+.game-btn-text {
+  font-family: "Bebas Neue", sans-serif;
+  color: #ffffff;
+  text-shadow:
+    0 0 1px #000,
+    1px 1px 2px #000,
+    -1px -1px 2px #000,
+    0px 2px 4px rgba(0, 0, 0, 0.8);
+}

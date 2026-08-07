@@ -1,0 +1,40 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  highlightText?: string;
+  bgImage?: string;
+  personaje?: string;
+}
+
+const {
+  title = "UN PODER SIN PRECEDENTES",
+  subtitle = "Siente el poder de cada batalla en tus manos con efectos visuales deslumbrantes y físicas dinámicas.",
+  highlightText = "ROMPE TUS LÍMITES",
+  bgImage = "/image/backgroundcorporacion.png",
+  personaje = "/image/personaje.png"  
+
+} = Astro.props;
+---
+
+<section id="huge-text-section" class="relative h-[550vh] w-full bg-black isolate">
+  <div class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 ">
+      <img src={bgImage} alt="Background" class="w-full h-full object-cover" />
+      <img src={personaje} alt="Personaje" class="w-full h-full z-50 absolute bottom-0 right-0  h-auto object-contain" />
+      <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
+    </div>
+
+    <!-- Massive Text Container -->
+    <div class="relative w-full h-full flex items-center overflow-hidden whitespace-nowrap">
+      <h2 data-massive-text class="text-[15rem] text-white sm:text-[20rem] md:text-[10rem] font-black uppercase tracking-tight text-transparent leading-none font-['Helvetica_Condensed'] select-none"
+      
+      >
+          {title}
+      </h2>
+    </div>
+    
+  
+  </div>
+</section>

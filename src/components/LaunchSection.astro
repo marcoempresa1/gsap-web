@@ -1,0 +1,180 @@
+---
+import BaseButton from '@/shared/BaseButton.astro';
+
+const editions = [
+  {
+    name: 'Edición Estándar',
+    price: '$69.99',
+    badge: 'Popular',
+    features: [
+      'Juego Base Completo',
+      'Desbloqueo Anticipado de 6 Personajes',
+      'Pase de Pre-orden Exclusivo'
+    ],
+    highlight: false,
+    variant: 'gold' as const
+  },
+  {
+    name: 'Edición Deluxe',
+    price: '$99.99',
+    badge: 'Recomendada',
+    features: [
+      'Todo lo de la Edición Estándar',
+      'Acceso Anticipado 3 Días Antes',
+      'Season Pass (Más de 20 Personajes DLC)',
+      'Invocación de Shenron'
+    ],
+    highlight: true,
+    variant: 'orange' as const
+  },
+  {
+    name: 'Edición Ultimate',
+    price: '$119.99',
+    badge: 'Coleccionista',
+    features: [
+      'Todo lo de la Edición Deluxe',
+      'Pack Ultimate de Trajes Exclusivos',
+      'Tabla de Personalización Shenron Rojo',
+      'Banda Sonora Anime Original (12 Temas)'
+    ],
+    highlight: false,
+    variant: 'gold' as const
+  }
+];
+
+const platforms = [
+  { name: 'PlayStation 5', tag: 'PS5' },
+  { name: 'Xbox Series X|S', tag: 'XBOX' },
+  { name: 'Steam / PC', tag: 'STEAM' },
+  { name: 'Nintendo Switch 2', tag: 'SWITCH' }
+];
+
+const gameFeatures = [
+  {
+    title: 'Combates 3D Ultrarrápidos',
+    desc: 'Participa en batallas tridimensionales aceleradas por Ki con efectos visuales deslumbrantes y físicas destructibles.',
+    icon: '⚡'
+  },
+  {
+    title: 'Plantilla Histórica de 180+ Guerreros',
+    desc: 'Desde Dragon Ball Z y Super hasta GT y películas. El catálogo de luchadores más grande en la historia de la saga.',
+    icon: '🔥'
+  },
+  {
+    title: 'Escenarios Destructibles',
+    desc: 'Siente la fuerza de cada golpe alterando el entorno en tiempo real con partículas avanzadas impulsadas por UE5.',
+    icon: '💥'
+  },
+  {
+    title: 'Modo Historia Personalizable',
+    desc: 'Revive momentos icónicos o toma decisiones alternativas que cambiarán el rumbo del universo Dragon Ball.',
+    icon: '📜'
+  }
+];
+---
+
+<section id="lanzamiento" class="py-24 bg-neutral-950 text-white border-t border-neutral-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    {/* Section Header */}
+    <div class="text-center max-w-3xl mx-auto mb-20 gsap-reveal">
+      <span class="text-xs font-bold tracking-widest uppercase text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
+        Detalles del Lanzamiento
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight mt-4">
+        Prepárate para la <span class="text-amber-400">Batalla Final</span>
+      </h2>
+      <p class="text-neutral-400 mt-4 text-base sm:text-lg">
+        El capítulo más esperado en la historia de los juegos de Dragon Ball está a punto de comenzar.
+      </p>
+    </div>
+
+    {/* Platform Availability Grid */}
+    <div class="mb-24 gsap-reveal">
+      <h3 class="text-center text-xs font-semibold tracking-widest text-neutral-500 uppercase mb-8">
+        Disponible en las siguientes plataformas
+      </h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {platforms.map((plat) => (
+          <div class="flex items-center justify-center gap-3 p-5 rounded-xl bg-neutral-900/50 border border-neutral-800 hover:border-amber-500/40 transition-colors">
+            <span class="text-sm font-extrabold tracking-widest text-amber-400">{plat.tag}</span>
+            <span class="text-sm font-medium text-neutral-300">{plat.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Key Game Features */}
+    <div id="caracteristicas" class="mb-28">
+      <div class="text-center max-w-2xl mx-auto mb-12 gsap-reveal">
+        <h3 class="text-2xl sm:text-3xl font-bold uppercase">Características Principales</h3>
+        <p class="text-neutral-400 text-sm mt-2">Diseñado desde cero para la nueva generación de consolas.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {gameFeatures.map((feat) => (
+          <div class="gsap-card p-6 rounded-2xl bg-gradient-to-b from-neutral-900/80 to-neutral-900/30 border border-neutral-800/80 hover:border-amber-500/50 transition-all duration-300 group">
+            <div class="text-3xl mb-4 group-hover:scale-110 transition-transform duration-200">
+              {feat.icon}
+            </div>
+            <h4 class="text-lg font-bold text-white mb-2 group-hover:text-amber-300 transition-colors">
+              {feat.title}
+            </h4>
+            <p class="text-sm text-neutral-400 leading-relaxed">
+              {feat.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Editions & Pre-Orders */}
+    <div id="ediciones" class="pt-8">
+      <div class="text-center max-w-2xl mx-auto mb-16 gsap-reveal">
+        <span class="text-xs font-bold tracking-widest uppercase text-amber-400">Reserva tu Copia</span>
+        <h3 class="text-3xl sm:text-4xl font-extrabold uppercase mt-2">Elige tu Edición</h3>
+        <p class="text-neutral-400 text-sm mt-2">Recibe bonificaciones exclusivas al reservar antes del lanzamiento.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {editions.map((ed) => (
+          <div class:list={[
+            "gsap-card relative p-8 rounded-2xl flex flex-col justify-between transition-all duration-300",
+            ed.highlight 
+              ? "bg-neutral-900 border-2 border-amber-500/80 shadow-[0_0_30px_rgba(245,158,11,0.15)] scale-105" 
+              : "bg-neutral-900/40 border border-neutral-800 hover:border-neutral-700"
+          ]}>
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-400 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/20">
+                  {ed.badge}
+                </span>
+                <span class="text-2xl font-black text-white">{ed.price}</span>
+              </div>
+
+              <h4 class="text-xl font-bold uppercase text-white mb-6">{ed.name}</h4>
+
+              <ul class="space-y-3 mb-8">
+                {ed.features.map((item) => (
+                  <li class="flex items-start gap-3 text-sm text-neutral-300">
+                    <svg class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="pt-4 border-t border-neutral-800/80 flex justify-center">
+              <BaseButton href="#" variant={ed.variant} class="w-full">
+                Reservar {ed.name.split(' ')[1]}
+              </BaseButton>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
