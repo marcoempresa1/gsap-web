@@ -8,15 +8,16 @@ export function initHugeTextAnimation() {
 
   if (!section || !massiveText) return;
 
-  // Animate massive text to move left on scroll
+  // Calculate exactly how far to move the text to reveal all of it, regardless of screen size
   gsap.to(massiveText, {
-    xPercent: -36,
-    ease: "power2.inOut",
+    x: () => -(massiveText.scrollWidth - window.innerWidth + (window.innerWidth * 0.1)),
+    ease: "none",
     scrollTrigger: {
       trigger: section,
       start: "top top",
-      end: "=+3000",
+      end: "bottom bottom",
       scrub: 1,
+      invalidateOnRefresh: true, // Importante para recalcular si el usuario gira el móvil
     },
   });
 }
