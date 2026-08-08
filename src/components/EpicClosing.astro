@@ -1,6 +1,7 @@
 ---
 // Usamos una de las imágenes espectaculares para el cierre
-const closingImage = "/image/hero.png";
+import { Image } from 'astro:assets';
+import closingImage from '@/assets/image/hero.png';
 const logoUrl = "/image/dblogo.webp";
 ---
 
@@ -10,12 +11,14 @@ const logoUrl = "/image/dblogo.webp";
 >
 
   <div class="absolute inset-0 z-0">
-    <img
+    <Image
       src={closingImage}
       alt="Epic Closing"
       class="w-full h-full object-cover"
     />
   </div>
+
+
 
 
   <div

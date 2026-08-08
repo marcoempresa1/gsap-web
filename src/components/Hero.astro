@@ -1,9 +1,10 @@
 ---
 import Header from "./Header.astro";
 import TrailerButton from "./TrailerButton.astro";
-const heroBg = "/image/hero.png";
-const logoUrl = "/image/dblogo.webp";
-const transitionImage = "/image/trans.webp";
+import { Image } from 'astro:assets';
+import heroBg from "@/assets/image/hero.png";
+import logoUrl from "@/assets/image/dblogo.webp";
+import transitionImage from "@/assets/image/trans.webp";
 ---
 
 <section
@@ -23,7 +24,7 @@ const transitionImage = "/image/trans.webp";
         <TrailerButton />
       </div>
     </div>
-    <img
+    <Image
       data-hero-bg
       src={heroBg}
       alt="Dragon Ball Hero"
@@ -41,7 +42,7 @@ const transitionImage = "/image/trans.webp";
       class="hero-mask absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-white z-10 -mt-10"
     >
 
-      <img
+      <Image
         data-hero-subtitle
         src={logoUrl}
         alt="Dragon Ball Xenoverse 3"
@@ -65,7 +66,7 @@ const transitionImage = "/image/trans.webp";
           data-transition-text
           class="relative text-[8rem] sm:text-[14rem] md:text-[8rem] lg:text-[12rem] font-black uppercase  text-transparent leading-none  select-none"
           style={`
-            background-image: url("${heroBg}");
+            background-image: url("${heroBg.src}");
             background-size: cover;
             background-position: center;
             background-attachment: fixed;

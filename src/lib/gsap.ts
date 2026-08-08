@@ -55,7 +55,7 @@ export function initFeatureScroll() {
             trigger: textBlock,
             start: "top center",
             end: "center center",
-            scrub: true,
+            scrub: 1.5,
           }
         }
       );
@@ -71,7 +71,7 @@ export function initFeatureScroll() {
           trigger: textBlock,
           start: "top 80%",
           end: "center center",
-          scrub: true,
+          scrub: 1.5,
         }
       });
     }

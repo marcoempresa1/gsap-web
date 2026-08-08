@@ -1,16 +1,17 @@
 ---
 import BaseButton from '@/shared/BaseButton.astro';
 
+import { Image } from 'astro:assets';
+import thumbnailUrl from '@/assets/image/trailerbutton.webp';
+
 interface Props {
   videoUrl?: string;
-  thumbnailUrl?: string;
   title?: string;
   subtitle?: string;
 }
 
 const {
   videoUrl = 'https://www.youtube.com/watch?v=v_Copbn4ASI',
-  thumbnailUrl = '/image/trailerbutton.webp',
   title = 'Descubre el trailer oficial',
   subtitle = 'Ver trailer'
 } = Astro.props;
@@ -26,7 +27,7 @@ const {
 >
   <!-- 1. Imagen a sangre (desaparece con width/height 0 al cerrar) -->
   <picture class="trailer-cta__media block shrink-0 overflow-hidden h-full transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
-    <img
+    <Image
       src={thumbnailUrl}
       alt="Trailer"
       class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"

@@ -32,7 +32,7 @@ export function initHeroCinematic() {
       trigger: hero,
       start: "top top",
       end: "bottom bottom",
-      scrub: 1,
+      scrub: 1.5,
       pin: hero.firstElementChild as HTMLElement,
       pinSpacing: false,
     },

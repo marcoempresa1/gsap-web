@@ -1,20 +1,25 @@
 ---
 // src/components/FeatureScroll.astro
+import { Image } from 'astro:assets';
+import gallery1 from '@/assets/image/gallery1.jpg';
+import gallery2 from '@/assets/image/gallery2.webp';
+import gallery3 from '@/assets/image/gallery3.png';
+
 const features = [
   {
     title: "Un Mundo Inexplorado",
     description: "Adéntrate en un universo futuro de DRAGON BALL completamente nuevo, lleno de personajes únicos y originales que cobran vida gracias a Akira Toriyama, el creador original de DRAGON BALL.",
-    image: "/image/gallery1.jpg",
+    image: gallery1,
   },
   {
     title: "El Año 1000",
     description: "En el AÑO 1000, viaja a través de la desarrollada y vibrante West City. Explora la bulliciosa ciudad, encuéntrate con personajes icónicos y descubre nuevas y emocionantes historias.",
-    image: "/image/gallery2.webp",
+    image: gallery2,
   },
   {
     title: "Tu Propia Historia",
     description: "Guiado hacia las filas del Gran Escuadrón Saiya, lucharás hombro a hombro con tus aliados a medida que los eventos en West City comiencen a tomar forma.",
-    image: "/image/gallery3.png",
+    image: gallery3,
   }
 ];
 ---
@@ -26,7 +31,7 @@ const features = [
     <div data-feature-pin class="hidden md:flex w-full md:w-1/2 h-screen items-center justify-center p-8 lg:p-12">
        <div class="relative w-full aspect-square md:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-zinc-800">
           {features.map((feature, index) => (
-             <img 
+             <Image 
                data-feature-img={index}
                src={feature.image} 
                alt={feature.title}
@@ -45,7 +50,7 @@ const features = [
          <div data-feature-text={index} class="min-h-screen flex flex-col justify-center px-8 md:pr-12 py-24 md:py-0 space-y-6">
 
             <div class="md:hidden relative w-full aspect-video rounded-2xl overflow-hidden mb-8 shadow-xl border border-zinc-800">
-                <img src={feature.image} alt={feature.title} class="w-full h-full object-cover" />
+                <Image src={feature.image} alt={feature.title} class="w-full h-full object-cover" />
             </div>
 
             <div class="feature-text-content opacity-0 translate-y-12">
