@@ -1,0 +1,72 @@
+---
+---
+
+<div id="loading-screen" class="fixed inset-0 z-[100] flex bg-orange-500 transition-opacity duration-700 ease-in-out">
+  
+
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <div class="relative w-24 h-24 rounded-full bg-black shadow-2xl flex items-center justify-center animate-pulse">
+      
+
+      <div class="relative w-12 h-12 flex items-center justify-center -rotate-[15deg]">
+
+        <svg viewBox="0 0 51 48" fill="#f97316" class="w-4 h-4 absolute top-1 left-1">
+          <path d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+        </svg>
+
+        <svg viewBox="0 0 51 48" fill="#f97316" class="w-4 h-4 absolute top-1 right-1">
+          <path d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+        </svg>
+
+        <svg viewBox="0 0 51 48" fill="#f97316" class="w-4 h-4 absolute bottom-1 left-1">
+          <path d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+        </svg>
+
+        <svg viewBox="0 0 51 48" fill="#f97316" class="w-4 h-4 absolute bottom-1 right-1">
+          <path d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="absolute bottom-8 right-12 text-black font-['Bebas_Neue'] text-xl sm:text-2xl tracking-[0.2em] opacity-80 flex">
+    <span>LOADING</span><span class="loading-dots"></span>
+  </div>
+</div>
+
+<style>
+  @keyframes dots {
+    0% { content: ''; }
+    25% { content: '.'; }
+    50% { content: '..'; }
+    75% { content: '...'; }
+    100% { content: ''; }
+  }
+  .loading-dots::after {
+    content: '';
+    animation: dots 1.5s infinite steps(1);
+    display: inline-block;
+    width: 1em;
+    text-align: left;
+  }
+</style>
+
+<script>
+
+  window.addEventListener('load', () => {
+    const loadingScreen = document.getElementById('loading-screen');
+    if (loadingScreen) {
+
+      setTimeout(() => {
+        loadingScreen.style.opacity = '0';
+        loadingScreen.style.pointerEvents = 'none';
+        
+
+        setTimeout(() => {
+          loadingScreen.remove();
+        }, 700);
+      }, 600);
+    }
+  });
+</script>

@@ -1,0 +1,65 @@
+---
+// src/components/FeatureScroll.astro
+const features = [
+  {
+    title: "Un Mundo Inexplorado",
+    description: "Adéntrate en un universo futuro de DRAGON BALL completamente nuevo, lleno de personajes únicos y originales que cobran vida gracias a Akira Toriyama, el creador original de DRAGON BALL.",
+    image: "/image/gallery1.jpg",
+  },
+  {
+    title: "El Año 1000",
+    description: "En el AÑO 1000, viaja a través de la desarrollada y vibrante West City. Explora la bulliciosa ciudad, encuéntrate con personajes icónicos y descubre nuevas y emocionantes historias.",
+    image: "/image/gallery2.webp",
+  },
+  {
+    title: "Tu Propia Historia",
+    description: "Guiado hacia las filas del Gran Escuadrón Saiya, lucharás hombro a hombro con tus aliados a medida que los eventos en West City comiencen a tomar forma.",
+    image: "/image/gallery3.png",
+  }
+];
+---
+
+<section id="feature-scroll-section" class="relative bg-zinc-950 text-white w-full">
+  <div class="flex flex-col md:flex-row w-full max-w-7xl mx-auto">
+    
+
+    <div data-feature-pin class="hidden md:flex w-full md:w-1/2 h-screen items-center justify-center p-8 lg:p-12">
+       <div class="relative w-full aspect-square md:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-zinc-800">
+          {features.map((feature, index) => (
+             <img 
+               data-feature-img={index}
+               src={feature.image} 
+               alt={feature.title}
+               class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+               style={`opacity: ${index === 0 ? 1 : 0}; z-index: ${10 - index};`}
+             />
+          ))}
+
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-20 pointer-events-none"></div>
+       </div>
+    </div>
+
+
+    <div class="w-full md:w-1/2 flex flex-col relative z-10 md:pb-[50vh]">
+       {features.map((feature, index) => (
+         <div data-feature-text={index} class="min-h-screen flex flex-col justify-center px-8 md:pr-12 py-24 md:py-0 space-y-6">
+
+            <div class="md:hidden relative w-full aspect-video rounded-2xl overflow-hidden mb-8 shadow-xl border border-zinc-800">
+                <img src={feature.image} alt={feature.title} class="w-full h-full object-cover" />
+            </div>
+
+            <div class="feature-text-content opacity-0 translate-y-12">
+              
+              <h2 class="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase text-white font-['bebas neue'] mb-6 break-words [word-break:break-word] hyphens-auto">
+                 {feature.title}
+              </h2>
+              <p class="text-lg sm:text-xl text-zinc-400 font-light leading-relaxed max-w-lg">
+                 {feature.description}
+              </p>
+            </div>
+         </div>
+       ))}
+    </div>
+
+  </div>
+</section>

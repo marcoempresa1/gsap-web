@@ -27,7 +27,7 @@ const transitionImage = "/image/trans.webp";
       data-hero-bg
       src={heroBg}
       alt="Dragon Ball Hero"
-      class="absolute inset-0 h-full w-full scale-105 object-cover"
+      class="absolute inset-0 h-full w-full object-cover"
     />
 
     <div
@@ -40,7 +40,7 @@ const transitionImage = "/image/trans.webp";
       data-hero-text
       class="hero-mask absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-white z-10 -mt-10"
     >
-      <!-- Central Logo -->
+
       <img
         data-hero-subtitle
         src={logoUrl}
@@ -48,7 +48,7 @@ const transitionImage = "/image/trans.webp";
         class="h-32 sm:h-40 lg:h-48 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(6,182,212,0.4)] mb-4"
       />
 
-      <!-- Subtitle / Tagline -->
+
       <p
         data-hero-description
         class="hero-word max-w-2xl text-lg sm:text-xl lg:text-2xl uppercase tracking-[0.18em] text-5xl md:text-7xl leading-none mb-6 font-['Helvetica_Condensed'] [text-shadow:_0_1px_0_#000,_0_-1px_0_#000,_1px_0_0_#000,_-1px_0_0_#000,_0_2px_6px_rgba(0,0,0,0.45)]"
@@ -68,6 +68,7 @@ const transitionImage = "/image/trans.webp";
             background-image: url("${heroBg}");
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             -webkit-background-clip: text;
             background-clip: text;
           `}

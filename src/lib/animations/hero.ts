@@ -40,7 +40,12 @@ export function initHeroCinematic() {
 
   // 1. Zoom in and slight darkening of background image on scroll
   if (heroBg) {
-    tl.to(heroBg, { scale: 1.35, filter: "", ease: "none", duration: 14 }, 0);
+    tl.fromTo(
+      heroBg,
+      { scale: 1 },
+      { scale: 1.35, ease: "none", duration: 14 },
+      0
+    );
   }
 
   // 2. Animate central logo (Dragon Ball Xenoverse 3)
@@ -135,11 +140,12 @@ export function initHeroCinematic() {
     );
   }
 
+  // 7. Salida con Parallax pronunciado (El usuario baja, los elementos suben)
   tl.to(
     [heroSubtitle, heroDescription],
     {
       opacity: 0,
-      y: -50,
+      y: 1, // Movimiento vertical opuesto al scroll más agresivo
       filter: "blur(12px)",
       duration: 3,
       ease: "power2.in",
@@ -148,4 +154,4 @@ export function initHeroCinematic() {
   );
 }
 
-export function initHeaderAnimation() {}
+export function initHeaderAnimation() { }

@@ -18,19 +18,19 @@ const {
 
 <section
   id="huge-text-section"
-  class="relative h-[550vh] w-full bg-black isolate"
+  class="relative h-[400vh] w-full bg-black isolate"
 >
   <div
     class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden"
   >
-    <!-- Background Image -->
+
 
     <div
       id="fullscreen-bg-section"
       class="absolute inset-0 flex items-center justify-center overflow-hidden"
     >
       <img src={bgImage} alt="Background" class="w-full h-full object-cover" />
-      <!-- Capa de sombra para oscurecer el fondo y que no resalte tanto -->
+
       <div class="absolute inset-0 bg-black/40"></div>
     </div>
 
@@ -43,9 +43,14 @@ const {
         alt="Personaje"
         class="h-[65vh] w-auto max-w-none md:w-full md:h-full md:max-w-full object-contain object-bottom drop-shadow-[0_0_30px_rgba(0,0,0,0.8)]"
       />
+
+      <div
+        class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent"
+      >
+      </div>
     </div>
 
-    <!-- Massive Text Container -->
+
     <div
       class="relative z-10 w-full h-full flex items-center overflow-hidden whitespace-nowrap"
     >

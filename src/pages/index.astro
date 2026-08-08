@@ -1,45 +1,69 @@
 ---
-import '../styles/global.css';
-import Hero from '@/components/Hero.astro';
-import FullscreenTextSection from '@/components/FullscreenTextSection.astro';
-import GallerySection from '@/components/GallerySection.astro';
-import LaunchSection from '@/components/LaunchSection.astro';
-import Footer from '@/components/Footer.astro';
+import "../styles/global.css";
+import Hero from "@/components/Hero.astro";
+import FullscreenTextSection from "@/components/FullscreenTextSection.astro";
+import FeatureScroll from "@/components/FeatureScroll.astro";
+import EpicClosing from "@/components/EpicClosing.astro";
+import Footer from "@/components/Footer.astro";
+import LoadingScreen from "@/components/LoadingScreen.astro";
 ---
 
 <html lang="es" class="scroll-smooth bg-black">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <title>Dragon Ball: Sparking! Zero - Sitio Oficial</title>
+    <title>Dragon Ball Xenoverse 3</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google Analytics -->
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-XXXXXXXXXX");
+    </script>
   </head>
 
-  <body class="overflow-x-hidden bg-black text-white antialiased selection:bg-amber-400 selection:text-black">
+  <body
+    class="overflow-x-hidden bg-black text-white antialiased select-none"
+    oncontextmenu="return false;"
+    ondragstart="return false;"
+  >
+    <LoadingScreen />
     <main class="relative z-10">
       <Hero />
       <FullscreenTextSection />
-      <GallerySection />
-      <LaunchSection />
+      <FeatureScroll />
+
+      <EpicClosing />
     </main>
 
     <Footer />
 
     <script type="module">
-      import { initPageAnimations } from '../lib/gsap.ts';
-      
+      import { initPageAnimations } from "../lib/gsap.ts";
 
       const startAnimations = () => {
         initPageAnimations();
       };
 
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', startAnimations, { once: true });
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", startAnimations, {
+          once: true,
+        });
       } else {
         startAnimations();
       }

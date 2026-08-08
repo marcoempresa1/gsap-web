@@ -1,0 +1,48 @@
+---
+// Usamos una de las imágenes espectaculares para el cierre
+const closingImage = "/image/hero.png";
+const logoUrl = "/image/dblogo.webp";
+---
+
+<section
+  id="epic-closing-section"
+  class="relative w-full h-[80vh] bg-black isolate"
+>
+
+  <div class="absolute inset-0 z-0">
+    <img
+      src={closingImage}
+      alt="Epic Closing"
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+
+  <div
+    class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black to-transparent z-10"
+  >
+  </div>
+
+
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black z-10"
+  >
+  </div>
+  <a
+    href="https://es.bandainamcoent.eu/dragon-ball/dragon-ball-xenoverse-3"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="bandai-btn group pointer-events-auto uppercase absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 flex items-start overflow-hidden bg-neutral-950/80 backdrop-blur-md transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] drop-shadow-[0_0_15px_rgba(0,0,0,0.8)] hover:bg-amber-400 hover:text-black px-6 py-3 text-white"
+    aria-label="Visita la web oficial de Bandai"
+  >
+
+    <span class="flex flex-col justify-start self-stretch px-6">
+      <span
+        class="bandai-btn__title block overflow-hidden whitespace-nowrap tracking-wider text-left font-bebas-neue"
+      >
+        Visita la web oficial de Bandai
+      </span>
+    </span>
+  </a>
+
+</section>
