@@ -17,6 +17,7 @@ export function initHugeTextAnimation() {
       start: "top top",
       end: "bottom bottom",
       scrub: true,
+      anticipatePin: 1,
       invalidateOnRefresh: true, // Importante para recalcular si el usuario gira el móvil
     },
   });

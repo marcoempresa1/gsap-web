@@ -35,6 +35,7 @@ export function initHeroCinematic() {
       scrub: true,
       pin: hero.firstElementChild as HTMLElement,
       pinSpacing: false,
+      anticipatePin: 1, // Previene "disparos" al soltar el pin
     },
   });
 
@@ -97,9 +98,9 @@ export function initHeroCinematic() {
       tl.to(
         transitionText,
         {
-          scale: 30, // Escala ligeramente menor para móviles (rendimiento)
+          scale: 15, // Aún menor para garantizar fluidez en móviles de gama baja
           opacity: 0,
-          duration: 2.2,
+          duration: 2.0,
           ease: "power3.in",
         },
         6.8,

@@ -17,7 +17,7 @@ gsap.config({
 
 export function initSmoothScroll() {
   const lenis = new Lenis({
-    duration: 1.2, // Reducido para evitar el efecto de acumulación de inercia
+    duration: 0.8, // Muy reducido para evitar inercia fantasma
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
     smoothWheel: true,
     wheelMultiplier: 1.0,
@@ -48,6 +48,7 @@ export function initFeatureScroll() {
     end: "bottom bottom",
     pin: pinContainer,
     pinSpacing: false,
+    anticipatePin: 1, // Previene saltos al anclar
   });
 
   textBlocks.forEach((textBlock, index) => {
@@ -121,7 +122,7 @@ export function initSectionSnapping() {
 
 export function initPageAnimations() {
   initSmoothScroll();
-  initSectionSnapping();
+  // Eliminamos initSectionSnapping() porque causaba el "disparo" indeseado hacia otras secciones
   initHeroCinematic();
   initHeaderAnimation();
   initHugeTextAnimation();
