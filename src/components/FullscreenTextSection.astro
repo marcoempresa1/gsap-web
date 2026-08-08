@@ -1,15 +1,16 @@
 ---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import bgImageUrl from '@/assets/image/backgroundcorporacion.png';
+import personajeUrl from '@/assets/image/personaje.png';
+
 interface Props {
   title?: string;
   subtitle?: string;
   highlightText?: string;
-  bgImage?: string;
-  personaje?: string;
+  bgImage?: string | ImageMetadata;
+  personaje?: string | ImageMetadata;
 }
-
-import { Image } from 'astro:assets';
-import bgImageUrl from '@/assets/image/backgroundcorporacion.png';
-import personajeUrl from '@/assets/image/personaje.png';
 
 const {
   title = "UN PODER SIN PRECEDENTES",
