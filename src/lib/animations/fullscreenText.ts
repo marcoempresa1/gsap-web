@@ -16,7 +16,7 @@ export function initHugeTextAnimation() {
       trigger: section,
       start: "top top",
       end: "bottom bottom",
-      scrub: 1.5,
+      scrub: true,
       invalidateOnRefresh: true, // Importante para recalcular si el usuario gira el móvil
     },
   });
@@ -41,7 +41,7 @@ export function initFullScreenTextSection() {
         trigger: section,
         start: "top bottom",
         end: "bottom top",
-        scrub: 1.5,
+        scrub: true,
       },
     });
   }
@@ -56,7 +56,7 @@ export function initFullScreenTextSection() {
         trigger: section,
         start: "top bottom",
         end: "bottom top",
-        scrub: 1.5,
+        scrub: true,
       },
     });
   }

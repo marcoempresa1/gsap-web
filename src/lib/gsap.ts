@@ -17,10 +17,10 @@ gsap.config({
 
 export function initSmoothScroll() {
   const lenis = new Lenis({
-    duration: 1.8, // Duración del deslizamiento (1.8s) para un efecto ultra fluido de inercia
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Easing exponencial ultra suave
+    duration: 1.2, // Reducido para evitar el efecto de acumulación de inercia
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
     smoothWheel: true,
-    wheelMultiplier: 1.2, // Un poco más de distancia por cada giro de rueda
+    wheelMultiplier: 1.0,
   });
 
   lenis.on('scroll', ScrollTrigger.update);
@@ -61,7 +61,7 @@ export function initFeatureScroll() {
             trigger: textBlock,
             start: "top center",
             end: "center center",
-            scrub: 1.5,
+            scrub: true, // Lenis ya suaviza, no necesitamos doble scrub lag
           }
         }
       );
@@ -77,7 +77,7 @@ export function initFeatureScroll() {
           trigger: textBlock,
           start: "top 80%",
           end: "center center",
-          scrub: 1.5,
+          scrub: true,
         }
       });
     }

@@ -32,7 +32,7 @@ export function initHeroCinematic() {
       trigger: hero,
       start: "top top",
       end: "bottom bottom",
-      scrub: 1.5,
+      scrub: true,
       pin: hero.firstElementChild as HTMLElement,
       pinSpacing: false,
     },
@@ -97,7 +97,7 @@ export function initHeroCinematic() {
       tl.to(
         transitionText,
         {
-          scale: 40,
+          scale: 30, // Escala ligeramente menor para móviles (rendimiento)
           opacity: 0,
           duration: 2.2,
           ease: "power3.in",
@@ -106,15 +106,15 @@ export function initHeroCinematic() {
       );
     }
 
-    // Se desvanece el fondo oscuro mientras atravesamos el texto
+    // Se desvanece el fondo oscuro un poco antes para evitar peso en GPU
     tl.to(
       transitionScreen,
       {
         opacity: 0,
-        duration: 2.2,
+        duration: 1.5,
         ease: "power2.inOut",
       },
-      6.8,
+      7.0,
     );
   }
 
