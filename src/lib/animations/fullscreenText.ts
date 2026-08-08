@@ -1,7 +1,7 @@
 import gsap from "gsap";
 
 export function initHugeTextAnimation() {
-  const section = document.querySelector<HTMLElement>("#huge-text-section");
+  const section = document.querySelector<HTMLElement>("#el-poder");
   const massiveText = document.querySelector<HTMLElement>(
     "[data-massive-text]",
   );
@@ -23,7 +23,7 @@ export function initHugeTextAnimation() {
 }
 
 export function initFullScreenTextSection() {
-  const section = document.querySelector<HTMLElement>("#huge-text-section");
+  const section = document.querySelector<HTMLElement>("#el-poder");
   const bgImageCorp = document.querySelector<HTMLElement>("#fullscreen-bg-section");
   const personaje = document.querySelector<HTMLElement>("#fullscreen-personaje-section");
 

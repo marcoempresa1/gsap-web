@@ -28,7 +28,7 @@ export function initSmoothScroll() {
 }
 
 export function initFeatureScroll() {
-  const section = document.querySelector<HTMLElement>("#feature-scroll-section");
+  const section = document.querySelector<HTMLElement>("#mundo");
   const pinContainer = document.querySelector<HTMLElement>("[data-feature-pin]");
   const textBlocks = gsap.utils.toArray<HTMLElement>("[data-feature-text]");
   const images = gsap.utils.toArray<HTMLImageElement>("[data-feature-img]");
