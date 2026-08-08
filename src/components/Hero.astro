@@ -10,7 +10,7 @@ import transitionImage from "@/assets/image/trans.webp";
 <section
   id="inicio"
   data-hero-cinematic
-  class="relative isolate h-[220vh] overflow-hidden bg-black"
+  class="relative isolate h-[500vh] overflow-hidden bg-black"
 >
   <div
     class="relative flex h-screen items-center justify-center overflow-hidden"
@@ -28,7 +28,7 @@ import transitionImage from "@/assets/image/trans.webp";
       data-hero-bg
       src={heroBg}
       alt="Dragon Ball Hero"
-      class="absolute inset-0 h-full w-full object-cover"
+      class="absolute inset-0 h-full w-full object-cover will-change-transform"
     />
 
     <div
@@ -64,7 +64,7 @@ import transitionImage from "@/assets/image/trans.webp";
       >
         <span
           data-transition-text
-          class="relative text-[8rem] sm:text-[14rem] md:text-[8rem] lg:text-[12rem] font-black uppercase  text-transparent leading-none  select-none"
+          class="relative text-[8rem] sm:text-[14rem] md:text-[8rem] lg:text-[12rem] font-black uppercase  text-transparent leading-none  select-none will-change-transform"
           style={`
             background-image: url("${heroBg.src}");
             background-size: cover;

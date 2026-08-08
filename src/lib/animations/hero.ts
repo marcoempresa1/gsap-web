@@ -92,12 +92,12 @@ export function initHeroCinematic() {
         0,
       );
 
-      // Fase 2: Zoom masivo y desenfoque (atravesamos el texto)
+      // Fase 2: Zoom masivo (atravesamos el texto). Quitamos el blur porque
+      // re-renderizar text-clip + blur(30px) a escala 40x destroza el rendimiento
       tl.to(
         transitionText,
         {
           scale: 40,
-          filter: "blur(30px)",
           opacity: 0,
           duration: 2.2,
           ease: "power3.in",
@@ -133,25 +133,10 @@ export function initHeroCinematic() {
       { opacity: 1, y: 0, duration: 1.6, ease: "power2.out" },
       7.8,
     );
-    tl.to(
-      trailerWrapper,
-      { opacity: 0, y: -30, duration: 3, ease: "power2.in" },
-      14,
-    );
+
   }
 
-  // 7. Salida con Parallax pronunciado (El usuario baja, los elementos suben)
-  tl.to(
-    [heroSubtitle, heroDescription],
-    {
-      opacity: 0,
-      y: 1, // Movimiento vertical opuesto al scroll más agresivo
-      filter: "blur(12px)",
-      duration: 3,
-      ease: "power2.in",
-    },
-    14,
-  );
+
 }
 
 export function initHeaderAnimation() { }

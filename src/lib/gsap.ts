@@ -9,6 +9,12 @@ import Lenis from "lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Forzar aceleración por GPU (GPU compositing) en todas las animaciones
+// para que el rendimiento sea extremadamente fluido, "casi offline".
+gsap.config({
+  force3D: true,
+});
+
 export function initSmoothScroll() {
   const lenis = new Lenis({
     duration: 1.8, // Duración del deslizamiento (1.8s) para un efecto ultra fluido de inercia
